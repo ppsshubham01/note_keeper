@@ -31,6 +31,7 @@ class NoteDetailState extends State<NoteDetail> {
       onWillPop: () {
         moveToLastScreen();
 
+
       },
       child: Scaffold(
         appBar: AppBar(
