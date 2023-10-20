@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:note_keeper/screens/note_detail.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class NoteList extends StatefulWidget {
   @override
@@ -70,7 +71,7 @@ class NoteListState extends State<NoteList> {
   }
   void NavigateTodetail(String title){
     Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return NoteDetail();
+      return NoteDetail(title);
     }));
 
   }

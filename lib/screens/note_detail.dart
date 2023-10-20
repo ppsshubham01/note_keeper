@@ -7,12 +7,13 @@ class NoteDetail extends StatefulWidget {
   NoteDetail(this.appBarTitlel);
 
   @override
+  // _NoteDetailState createState() => _NoteDetailState( appBarTitlel);
   State<StatefulWidget> createState() {
-    return NoteDetailState(this.appBarTitlel);
+    return NoteDetailState(appBarTitlel);
   }
 }
 
-class NoteDetailState extends State<NoteDetail> {
+class NoteDetailState  extends State<NoteDetail> {
 
   static var _priorities = ['High', 'Low'];
   String appBarTitle;
@@ -20,16 +21,17 @@ class NoteDetailState extends State<NoteDetail> {
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
 
-  NoteDetailState(this.appBarTitle)
+  NoteDetailState(this.appBarTitle);
 
   @override
   Widget build(BuildContext context) {
     TextStyle? textStyle = Theme.of(context).textTheme.titleMedium;
-    
+
     return WillPopScope(
       //willPopScope wedget is for handle on your device back button to navigate a screen
       onWillPop: () {
         moveToLastScreen();
+        return Future.value(false);
 
 
       },
@@ -38,7 +40,7 @@ class NoteDetailState extends State<NoteDetail> {
           title: Text(appBarTitle),
           // Perform a pop operation on backbutton lick whih screen you want
           leading: IconButton(
-            icon: Icon(Icons.back_hand),
+            icon: Icon(Icons.arrow_back),
             onPressed: () {
               moveToLastScreen();
             },
@@ -138,6 +140,5 @@ class NoteDetailState extends State<NoteDetail> {
 
   void moveToLastScreen() {
     Navigator.pop(context);
-    
   }
 }
