@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:note_keeper/screens/note_detail.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:note_keeper/models/notes.dart';
+import 'package:note_keeper/utils/database_helper.dart';
+import 'package:sqflite/sqflite.dart';
+import 'dart:async';
 
 class NoteList extends StatefulWidget {
+
+  DatabaseHelper databaseHelper = DatabaseHelper();
+  late List<Note> noteList;
+  int count = 0;
+
   @override
   State<StatefulWidget> createState() {
     return NoteListState();
@@ -25,11 +34,15 @@ class NoteListState extends State<NoteList> {
 
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // NavigateTodetail('Add Note');
-          _showInputDialog(context);
+
+          NavigateTodetail('Add Note');
+
+          // _showInputDialog(context);
           // Navigator.push(context, MaterialPageRoute(builder: (context) {
           //   return NoteDetail();
-          // }));
+          // }
+          // ));
+
         },
         tooltip: 'Add Note',
         child: Icon(Icons.add),
